@@ -85,11 +85,16 @@ def buy():
 
 if __name__ == '__main__':
     times = input("输入购买时间，格式为2020-12-08 12:00:00.000：")
+    # 启动chrome无头模式
+    chrome_options = webdriver.ChromeOptions()
+    chrome_options.add_argument('--headless')
+    browser = webdriver.Chrome(options=chrome_options)
+
     # 启动chrome浏览器
     # browser = webdriver.Chrome()
 
     # 启动phantomjs浏览器
-    browser = webdriver.PhantomJS()
+    # browser = webdriver.PhantomJS()
     browser.maximize_window()
     login()
     buy()
