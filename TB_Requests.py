@@ -4,7 +4,7 @@ import re
 login_check_username_address = 'https://login.taobao.com/newlogin/account/check.do?appName=taobao&fromSite=0'
 username = '15804771016'
 password = '5256fca1aa8770327c64cefc408a5100821a72a0df35468cdb1504bff215fe7992c40507e3e9d0134fafb57f2ffaf44660e9389073b109ba1ddf8cf2f66f8ce43ffa3270f1f6af25583a18444243ad5fe12a4f1c068c8470d2646a9de92fb6bbfd22a5d40f1a5b392463d0be884789167cea622b61e5f9db88d963ec7dbbf849'
-login_ua = '137#n5B9hE9o9CCqQQ/RpcJyLhcGInQeeQ0WEPNBUtQhoB+Tl5THTjJFSe2f8Ki3q2x/blSdCZF5Oo8fp4E97Ej+rN7po5zACRTmiUsmbRN3m5+9Sf5MwrvMvykxEcp6ErT3YV59VOjh5OMOmaJDTGpyp4ZpDoxhFAJ/lWezhuNTGAr+8+RHTuW0uKAN4bfLsfwg4uPCWZCAXIct9iWXeT1ho3X8Yqd9o0vXmMeXgsl6qn45pgET899L+GDIAyAueh70HaHoYRNa5jFTNql9+lnqOnDcj2sdrAN83LGIRdE20a5NUgepsza5+jAme0m0xyt2hv9zubvJAE8rCs3vD5hpY7tZ9GSwR6LHvGxw73QHPxJr9A+AM0e70T0Xi7PC+SPbfiJkz5eqwSwwieml14BUBu9RFFAhk0Jc1IeivtksbSJSklIPpId7QeQI+GDV9uJm1ie964SYYTJS1lQypXicQobJ+ZXW0mMS0eeidtpVYSUS1lgihtGKYeUJ8vxk/xOrCodTI0iV5oSk1LFAqppmQofJ+GQ9pkUm1AEy+pXpYSJS1lQipXpcQeno+ZXVucvIrK7p9+VUzDvGaeIcaS/UqOhDH8ZIUCpQYjouD3lsYqwcj7XzgHyw4YYCyW3X2yVWGPdOgJOWWMwrxTYhuFXiY/lQI94B5GI6fOajv64nkirCqTw+ZLTAyX+7KR/rlJiegXvRAfuaVHHPi7lb3Nsq+/rMLRz1GljhOhsF4J4sb41uz3a479XkQed8p1qxqYE4x3jMvcfXk2soJrXcPuoO8SG262Gplc3y5sGWGCgoDHDZBmns1LumRwTmmTC9UhN+7K8oXV4PywHSrjT4i1KnkCLHsW9tD1axzU1ZZtT0652I24NbYgqPICM9CDFPTkmwK/RhHe4X8joL9trcMK5ns85McGEVHe8JD0mRNEf8gzVxajNi0QIdDd27pRIsF6Bpny241Vk5hvvshU4mw8oZfal/tUVgrQ/Pe1ja6qLRY1sBUFlO7G6/K98KzgSfNHpHC7G8xtmI1MOKpGeQQOTBvlRZNhnQm4ZuO1JaZsP3tuM8EzpxEAupvkwLt5YP0mxAUNfXPjp2vFeWKxwP2oRwnNpM8w9edl8WuRy2BuwYAI/+WUyor0I7Pqrwvc4/kPrez8pCF3p8ocfX'
+login_ua = '137#Lzc9hE9o9iDh9a6khcOYsH9GIn9bVM1bwUuKtlKESP0CLn5LoR2OXC7N+RfxR5JwLoXitUCzLa/UGdM0P44xRhwntukL2VTMMTzhQ0Rg+l3oVX99xQs437xCKM5sy/KCwDefr+DVcJgb75dU3rkxAvABEg9rsCwTIJUlVhtOTJocudPJf3PIFxjf0aI875Qj0QG6o7tVX8IU9rTWQxVg7jzzMP7t7hlxHBrhsqg60FB+R5j9lggW64m1N13z9BbGiCxYJ5xqCJjsPUKzDc6DT0D5SpR8MN4G0Ux1Eado1+FT/pqEC1MqHMPJqy8zusGHByv8gvrTD4I1m7SDg7uzk9HXGjbSv8fcJQmcC40t97UWkRiUjDge93YE6ifr9A+AM0e70T0ZxkE1TeSuyuyZ2eyGG4JWQTrVaMDblsyzkcJKMOb195A0R3nEYTUx1lg8pD7jQARk0G7Vak1h1pgM0dIXMSOx1qeIpppE24hFLS7ppRUc1Aey+tIvYSUxKh7F5XWcQeVo+ZDVpRUm1ATyutiVYSUF2+DEyXij3HmJsRlnpRJc1Iei+cqpYSJS1qQiVppcQenJ+ZXVpkUm1AEy+pyp9GrTTtP9iIS2aOe0zfJw6gAHXAbksSx7cCyKkWpbnUtl+eUd8TdHEfnBangQlE7JG/YhjSOmp/uhNAI6PJHqdUJR2Utfio6D0gvHna1e0/53jy0IJ6tMJSL2EoyPOiBO1VuuArekgUeoT9z/EtZy/5pjCYRLZRtS2ZqvkdXLQc2C6UBHMoHK6+P43TlNghSBVaAj/2FQ54SJTf+Lf8Vj/XVa0fYr1ceJj18JuywaX8exzmVj2UdR75HQ6cq0X6+tYNerelQEH1oMouI/DoHuWtHrub0tGIur48qCxoNCBpB4uflukIEYHZoDRaMlFr53quuspftydUjk6+Mv0lfJCAFe132juICs+Qr/zaRi9oJqWWTl+eQNldXw1p3PnWJa+h4PQHD/y4aHJ5WtJVMZYj3+z5hLPaj7gcRXolNLb7g+f2LQ0TBKJQAdGOXUvOhrfNfkAWXQIVhZBTfWRa5QalOHefHeQ3Wy4cW7nmLBjJ/zOflQEJXnd8vVydwXWxOT8LIZmFh2rFmuQio5jR2o+9AjSK/r+IkHSIm3XCPZ2VRTp334ZXbR0eIlBhBK2DIM6yVn50KdoVVhZuuYAjCiiB=='
 login_address = 'https://login.taobao.com/newlogin/login.do?appName=taobao&fromSite=0'
 pre_purchase_address = 'https://cart.taobao.com/json/AsyncUpdateCart.do'
 purchase_address = 'https://buy.tmall.com/login/buy.do?from=cart'
@@ -82,6 +82,21 @@ def my_cart(response):
     return response
 
 
+def detail(response):
+    detail_url = "https://detail.tmall.com/item.htm?id=" + re.compile('"//detail.tmall.com/item.htm\?id=(.*)","weight"').findall(response.text)[0]
+    response = s.get(detail_url, headers=common_headers)
+    print("成功跳转到商品详情页面" + detail_url)
+
+    detail_data = {
+        'from': 'itemDetail',
+        'var': 'login_indicator',
+        'id': re.compile('"itemId":"(.*)","validatorUrl"').findall(response.text)[0],
+        'shop_id': re.compile('shopId:"(.*)",startTime').findall(response.text)[0],
+        'cart_ids':'',
+        't': re.compile("renderTime:\'(.*)\',").findall(response.text)[0]+'000',
+    }
+    response = s.get('https://buy.tmall.com/login/buy.do', headers=common_headers,data=detail_data)
+
 def purchase(response, quantity):
     shop_id = re.compile('"bundles":\["(.*)"],').findall(response.text)[0]
     cart_id = re.compile('"cartId":"(.*)","checked"').findall(response.text)[0]
@@ -133,4 +148,5 @@ if __name__ == '__main__':
     # check_username()
     res = login()
     res = my_cart(res)
-    res = purchase(res, '1')
+    # res = purchase(res, '1')
+    res = detail(res)
