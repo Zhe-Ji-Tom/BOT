@@ -1,10 +1,11 @@
 import requests
 import re
+import time
 
 login_check_username_address = 'https://login.taobao.com/newlogin/account/check.do?appName=taobao&fromSite=0'
 username = '15804771016'
 password = '5256fca1aa8770327c64cefc408a5100821a72a0df35468cdb1504bff215fe7992c40507e3e9d0134fafb57f2ffaf44660e9389073b109ba1ddf8cf2f66f8ce43ffa3270f1f6af25583a18444243ad5fe12a4f1c068c8470d2646a9de92fb6bbfd22a5d40f1a5b392463d0be884789167cea622b61e5f9db88d963ec7dbbf849'
-login_ua = '137#LQc9hE9o9iufahz/4cH3YWAGIndfcXJLIvHRnpC1EQl11Oaxu5N47F/SGTgsH9vOBZeyT+qkqRhBGa29zRVh8NiHlhs1oBUkiKyjiep8abBCDZLl8GA+TuLsTyO7J0Zkj7MXqLSgD65Cc9TA7r7Qf2Rf0cDAx3iHhn/TEJaKlQMYpk7YNW3xFT8mpYPugIATQe7tMj0MiPQCCBe6lw7Iw+rEQloutG6+eAgeYpDrT4SILXNEVVLr70uexVHpzihK+VmO5Nr4aVTNrRlci3l/sP77OQRbyGkuySlz5ME7fA3Q2Sh73ympDwrZhSCSRiwU8csjQq1Wwoa6lgx6l6wJ0ksX9vMcdIjyy6CFZeS3mr2eJAfZHRwfrwG5rkMqrlLiCFfCxQFn39rsT3Ms6L+eE4pYf50pRTSqN1OCfyQ/Eylwb3gbQMvFWC+Hrx0/407923KCXoqXG04wk6a2sTTtyPj+M7ZQZFIm00Jc1IeivXyUdyfJ1OP4U9NciIbS+bNlg0+caIKC+OIeYyJx19QByLSkQefJ+ZDVpRUc1AIy+tpWpbMc0ZQiqtpcQonJ+ZXVpTU41Aey+mYRvSTw11YyyXCJj4mJ+GXppRJm1oEy+pipYSS61qQipXicQeno+ZXVpkUm14oq+EBp6BqXEnTIph87hIHoFz5ERk1uRTXDxUL2JCfVMVLXcyrP4iNWzFM/3l3eKVuDRJDRZSt+rjprdkpIZRg3tutEu9wonehVFfo1EwJVUd1125DygnTZ7TYnLSyEcmEN87g+8CH8bDLU5G9X2r76uxPnQE/V3K9sR4n+2o3ssfpk6yj9J0W2QvYPOvjNZJKMLqW0+Sst0I6/x8Y6vGuZUApnZ1JiaJtJz3U6CGevMscmjcOYu8BsGOqRt/FBGv4nKZ/ijD90iQ5Um745CBSzMsZfxYgM7iZfizoRp9SfaRksXVjaaO9u/xF2WWxd8vTmfG5yq8c33+5ZonLj2LbNROwDPilSbDCLvDXhu0/ahpkHiRhDoFtMRSNwpAO0PrO1CqBOCBVTq1rNBujyofvcqFW7yOHo5N7YT162cDSMhaQbBxFD8rUY+umiIzdqlNpFX9+WGYMBbYRub6lmseqq7gO64Cnv9Uc6jasNqTDjB9DCkEv/9zsEPWeLNlOr2bJZwzU30E8KKR1CCe9XQOoGhKjG8hPC2RMpOZlrOVi4S7S2'
+login_ua = '137#grE9hE9o9Vm1mpAtCBHFRNg6IQr70ZOwhCFpUt68BE2/XsZMYS1Qof5gHBQQ6CCmQdUzUhb5qI/sJxclPdpk164o4ir9PiCnhzs7IDJXJOAxvrcePoX8g2inBEssgeaMmvbNYpBEmFQ1YdIZalH6Qd1QqZ9FQQo7iG9ZGujnqMqP/g7aifbvFe9l25fKCk99G7iR9aDow+MO0DezpbITh6Gn/W7u/8RgR7WuFKvHGEcVQLK9rvZOadhGmuySXxFXhzuJJmc27T3qhAKvw9BpSPyEXlLmjjZQoTlrjhFludx5EOuvekenwqBCUGaxawkwQFX3yUVJ2eC8xXty+BEIjP1b9BaFeZWAkXEIQrrJnGGTR0NbsFigQZUxd7v/jsnNfA4SDZ22ZgbG7yL8lcpqr3E4+Bo2myfgyCel9zSulXZWaTObnor+PVejsjBxiL5PvVZU4mo2Rnclj1Y55Uvtr4nRUer80Uj2nrQ/Eylwb3gbQMvp5J6DWXR6q4y1xhOjx1ciA5GxoFz81/jIE4/ShsLxTMoN7p/b7/8eZJfhR5/QYTUx1lg8pLucQAfo+l2dUu+mMgK4HXCf6y+xtXNW9tpmQFLhIAmVpkJc1Aey+tiVYSmS1lX90tASxInodG6VpRUc1AEy+tBEYSUS13gy7EQ0QSbay+mxc9bc1Iei+pppYrJS1qQipXPfQeno+ZDVpkUm1AEy+pipYvcq0M2WpBqXEnTYmrwXjV5vnGZBAjQBS2Btp/53U/TXHQnYBn7r7qWEymlay6bYLhAqCoEU1drukR43RGOo3VH3k2EJ3GgXn/mAqxJGS2GWECPE6mEeveh9mp6Y0An4jMofBH5/yziw35pamjKx4CkwYXWQsgIsASOYZfJQTnDnv5v6LlW8MpbOVPY6S5PYS+sxdfekHp/kXFFtYU0HmzlaPqLFEDLuWKpuYlhyO3ddYVBjRE6PR/pDVIzvPbRZQ92/eCcKECLaShq/sC5+tqnbRaRPnrXveReZ7QC5X2T2YVtVqgKaOml6lwqLMH072rxSiQNkbp361CyjhqYfKjsMvZLqziqjRQPOBvdGmL0NY+LCJRo74FI0NImFjU0oJP2h3p3+PBr2ISFUd35N99njOVTg8gppbrRv+Kv+XBRbMg6VjwsCGo+pAbDL1ftFz0IBdVNwVO2gdOdojp/Fxs6L38FKZTV0N9eqGiSofKWhjSiNnqFHBwwuBbtdqNuAFsEQgS+KzQf6BcVG765t7vdpYCLHjs7kyoy3bOyXTldxebRMAgmqyhmruNy5xfrLzG0B7YYwstPAYaG0vKk5YusdGM8pitngTwOy'
 login_address = 'https://login.taobao.com/newlogin/login.do?appName=taobao&fromSite=0'
 pre_purchase_address = 'https://cart.taobao.com/json/AsyncUpdateCart.do'
 purchase_address = 'https://buy.tmall.com/login/buy.do?from=cart'
@@ -145,24 +146,24 @@ def purchase(response, quantity):
     cart_id = re.compile('"cartId":"(.*)","checked"').findall(response.text)[0]
     sku_id = re.compile('"skuId":"(.*)","skuStatus"').findall(response.text)[0]
     item_id = re.compile('"itemId":"(.*)","leafCategory"').findall(response.text)[0]
-    time = re.compile('"currentTime":(.*),"diffTairCount"').findall(response.text)[0]
+    # time = re.compile('"currentTime":(.*),"diffTairCount"').findall(response.text)[0]
 
     cart_headers = {
-        'Connection': 'keep-alive',
-        'Cache-Control': 'max-age=0',
-        'Origin': 'https://cart.taobao.com',
-        'Upgrade-Insecure-Requests': '1',
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
-        'Content-Type': 'application/x-www-form-urlencoded',
+        # 'Connection': 'keep-alive',
+        # 'Cache-Control': 'max-age=0',
+        # 'Origin': 'https://cart.taobao.com',
+        # 'Upgrade-Insecure-Requests': '1',
+        # 'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36',
+        # 'Content-Type': 'application/x-www-form-urlencoded',
         "referer": 'https://cart.taobao.com/cart.htm?spm=a1z0d.6639537.1997525049.1.abcd74844nvvnd&from=mini&ad_id=&am_id=&cm_id=&pm_id=1501036000a02c5c3739',
-        'accept': 'application / json, text / javascript, * / *; q = 0.01',
-        'accept-encoding': 'gzip, deflate, br',
-        'accept-language': 'zh - CN, zh;q = 0.9',
-        'content-length': '432',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same - origin',
-        'x-requested-with': 'XMLHttpRequest',
+        # 'accept': 'application / json, text / javascript, * / *; q = 0.01',
+        # 'accept-encoding': 'gzip, deflate, br',
+        # 'accept-language': 'zh - CN, zh;q = 0.9',
+        # 'content-length': '432',
+        # 'sec-fetch-dest': 'empty',
+        # 'sec-fetch-mode': 'cors',
+        # 'sec-fetch-site': 'same - origin',
+        # 'x-requested-with': 'XMLHttpRequest',
     }
 
     cart_data = {
@@ -182,14 +183,19 @@ def purchase(response, quantity):
             'type': 'check'
         }],
         'shop_id': '0',
-        't': time,
+        't': str(time.time()),
         'type': 'check',
         'ct': 'f2c8b39be0bab415eb154e365daa0345',
         'page': '1',
         '_thwlang': 'zh_CN',
     }
 
-    s.post(pre_purchase_address, headers=cart_headers, data=cart_data)
+    headers = {
+        'referer': 'https://cart.taobao.com/',
+    }
+    response = s.get('https://gm.mmstat.com/tbcart.8.6?cache=' + str(time.time()), headers=headers)
+    response.raise_for_status()
+    response = s.post(pre_purchase_address, headers=cart_headers, data=cart_data)
     response = s.get(purchase_address)
     response = s.get("https://buy.taobao.com/auction/fastbuy/loginSuccess.vm?from=cart")
     return response
